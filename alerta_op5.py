@@ -35,16 +35,16 @@ class OP5Acknowledge(PluginBase):
 
         if status == 'ack':
             json_data = {"sticky":"1","notify":"0","persistent":"1","comment": text}
-            if alert.event_type = 'op5ServiceAlert':
+            if alert.event_type == 'op5ServiceAlert':
                 command_type = 'ACKNOWLEDGE_SVC_PROBLEM'
                 json_data["host_name"] = alert.resource
                 json_data["service_description"] = alert.event
-            if alert.event_type = 'op5HostAlert':
+            if alert.event_type == 'op5HostAlert':
                 command_type = 'ACKNOWLEDGE_HOST_PROBLEM'
                 json_data["host_name"] = alert.resource
             
             op5 = OP5(OP5_API_URL, OP5_API_USERNAME, OP5_API_PASSWORD, dryrun=False, debug=False, logtofile=False, interactive=False)
-            op5.command(command_type, json_data):
+            op5.command(command_type, json_data)
 
             # example r={"status":"success","data":{"silenceId":8}}
             #try:
@@ -53,3 +53,4 @@ class OP5Acknowledge(PluginBase):
             #except Exception as e:
             #    raise RuntimeError("Alertmanager: ERROR - %s", e)
             #LOG.debug('Alertmanager: Added silenceId %s to attributes', silenceId)
+
