@@ -12,7 +12,7 @@ setup(
     author='Anton Delitsch',
     author_email='anton@trugen.net',
     packages=find_packages(),
-    py_modules=['alerta_op5'],
+    py_modules=['alerta-op5'],
     install_requires=[
         "op5lib==1.0"
     ],
